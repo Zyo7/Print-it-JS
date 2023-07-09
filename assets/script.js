@@ -18,16 +18,8 @@ const slides = [
 ]
 
 let selectedSlide = 0 ;
-
-let arrowLeft = document.getElementById("arrow_left");
-arrowLeft.addEventListener("click", () => {
-	console.log("Vous avez cliqué sur la flèche gauche")
-});
-
-let arrowRight = document.getElementById("arrow_right");
-arrowRight.addEventListener("click", () => {
-	console.log("Vous avez cliqué sur la flèche droite")
-});
+let bannerText = document.getElementById("banner-txt");
+let bannerImage = document.getElementById("banner-img");
 
 let dots = document.querySelector(".dots");
 for (let count = 0; count < slides.length; count++) {
@@ -39,3 +31,20 @@ for (let count = 0; count < slides.length; count++) {
 let selectedDot = document.querySelectorAll(".dot");
 selectedDot[selectedSlide].classList.add("dot_selected");
 
+let arrowLeft = document.getElementById("arrow_left");
+arrowLeft.addEventListener("click", () => {
+	selectedDot[selectedSlide].classList.remove("dot_selected");
+	selectedSlide--;
+	bannerImage.src = "./assets/images/slideshow/" + slides[selectedSlide].image;
+	bannerText.innerHTML = slides[selectedSlide].tagLine;
+	selectedDot[selectedSlide].classList.add("dot_selected");
+});
+
+let arrowRight = document.getElementById("arrow_right");
+arrowRight.addEventListener("click", () => {
+	selectedDot[selectedSlide].classList.remove("dot_selected");
+	selectedSlide++;
+	bannerImage.src = "./assets/images/slideshow/" + slides[selectedSlide].image;
+	bannerText.innerHTML = slides[selectedSlide].tagLine;
+	selectedDot[selectedSlide].classList.add("dot_selected");
+});
