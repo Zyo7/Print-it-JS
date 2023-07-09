@@ -34,7 +34,12 @@ selectedDot[selectedSlide].classList.add("dot_selected");
 let arrowLeft = document.getElementById("arrow_left");
 arrowLeft.addEventListener("click", () => {
 	selectedDot[selectedSlide].classList.remove("dot_selected");
-	selectedSlide--;
+	if (selectedSlide == 0) {
+		selectedSlide = 3
+	}
+	else{
+		selectedSlide--;
+	}
 	bannerImage.src = "./assets/images/slideshow/" + slides[selectedSlide].image;
 	bannerText.innerHTML = slides[selectedSlide].tagLine;
 	selectedDot[selectedSlide].classList.add("dot_selected");
@@ -43,7 +48,12 @@ arrowLeft.addEventListener("click", () => {
 let arrowRight = document.getElementById("arrow_right");
 arrowRight.addEventListener("click", () => {
 	selectedDot[selectedSlide].classList.remove("dot_selected");
-	selectedSlide++;
+	if (selectedSlide == 3) {
+		selectedSlide = 0
+	}
+	else{
+		selectedSlide++;
+	}
 	bannerImage.src = "./assets/images/slideshow/" + slides[selectedSlide].image;
 	bannerText.innerHTML = slides[selectedSlide].tagLine;
 	selectedDot[selectedSlide].classList.add("dot_selected");
